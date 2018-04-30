@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>周俊-Sid's Personal station</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<style type="text/css">
+			.box{height: 1000px;width: 100%;margin-top: 10px;}
+			*{margin: 0;padding: 0;}
+			ul{list-style: none;}
+			body{font-family: inherit "微软雅黑";}
+			.container-fluid{padding: 0;}
+			h3{margin: 0;}
+			@keyframes leftround{
+				0%{transform: rotateY(-360deg);opacity: 0;margin-left: -100%;}
+				25%{transform: rotateY(-360deg);opacity: 0;margin-left: -100%;}
+				100%{transform: rotateY(0deg);opacity: 1;margin-left: 0;}
+			}
+			@keyframes rightround{
+				0%{transform: rotateY(-360deg);opacity: 0;margin-right: -100%;}
+				25%{transform: rotateY(-360deg);opacity: 0;margin-right: -100%;}
+				100%{transform: rotateY(0deg);opacity: 1;margin-right: 0;}
+			}
+			@keyframes opacitydownshow{
+				0%{opacity: 0;margin-top: -20px;margin-left: -20px;}
+				25%{opacity: 0;margin-top: -20px;margin-left: -20px;}
+				100%{opacity: 1;margin:0px;}
+			}
+			@keyframes opacityupshow{
+				0%{opacity: 0;margin-top: 150px;}
+				25%{opacity: 0;margin-top: 150px;}
+				100%{opacity: 1;margin-top:100px;}
+			}
+			@keyframes shakeshow{
+				0%{top: 0;}
+				35%{top:-30px;}
+				60%{top: 0;}
+				85%{top:-10px;}
+				100%{top:0px;}
+			}
+			.shakewrap{height: 35px;position: relative;}
+			.active .shakeshow{animation: shakeshow 0.7s forwards;width: 100%;position: absolute;}
+			.opacitydownshow{opacity: 0;}
+			.active .opacitydownshow{animation: opacitydownshow 3s forwards;}
+			.opacityupshow{opacity: 0;}
+			.active .opacityupshow{animation: opacityupshow 3s linear 0.1s forwards;}
+			
+			.top{position: relative;min-height: 650px;}
+			.top #rainy{position: absolute;width: 100%;height: 100%;z-index: 1;}
+			#rainy iframe{width: 100%;height: 100%;border: none;}
+			.top .container{z-index: 2;position: relative;}
+			.top div h3{color: #fff;font-weight: bold;margin: 50px 0;animation: leftround 3s;}
+			.top div h1{color: #D43F52;margin: 0;letter-spacing: 6px;padding: 25px 35px;border: 2px solid #D43F52;display: inline-block;animation: opacitydownshow 3s;font-size: 40px}
+			.top div .titlebanner{margin: 50px 0 40px;color: #fff;}
+			/*.top div .titlebanner h2{transition: all 1s;}*/
+			.top div p{color: #e9e9e9;margin: 0;width: 80%;display: inline-block;font-size: 14px;}
+			.top div .opacitydownshow{animation: opacitydownshow 3s;opacity: 1;}
+			
+			
+			.project{background-color: #000;padding-top: 100px;}
+			.project h3{height: 35px;line-height: 35px;color: #fff;font-weight: bold;text-align: center;}
+			.project .opacitydownshow{padding-top: 50px;}
+			.project .banner3d{padding-bottom: 180px;width: 100%;position: relative;transform-style: preserve-3d;perspective:1000px;-webkit-perspective:1000px;transform: rotateX(-10deg) rotateY(0deg);}
+			.project .banner3d>.production{transition: all 1s;overflow: hidden;position: absolute;transform: rotateY(40deg) translateZ(100px) ;opacity: 0.9;height: 50%;}
+			.project .banner3d>.production iframe{width: 100%;height: 100%;border: none;}
+			.project .banner3d>.nav{position: absolute;top: 30%;cursor: pointer;}
+			.project .banner3d>.prev{position: absolute;left: 0;padding-left: 2%;}
+			.project .banner3d>.next{position: absolute;right: 0;padding-right: 2%;}
+			.project .banner3d>.nav span{font-size: 20px;}
+			
+			.canuse{background-color: #1a1a1a;padding: 100px 0;}
+			.canuse h3{height: 35px;line-height: 35px;color: #fff;font-weight: bold;text-align: center;}
+			.canuse .container>div{font-size: 0;padding: 5% 5%;}
+			.canuse .container>div:hover{animation: shakeshow 0.7s;}
+			.canuse .container img{width: 100%;}
+			
+			.contact{background-color: #000;padding: 100px 0;min-height: 800px;}
+			.contact h3{height: 35px;line-height: 35px;color: #fff;font-weight: bold;text-align: center;}
+			.contact p{margin: 50px 0;}
+			.contact .shakewrap{margin-bottom: 100px;}
+			.contact .wechatwrap{font-family: "微软雅黑";color: #999;font-size: 14px;}
+			.contact i{font-size: 20px;color: #D43F52;border: 1px solid #fff;border-radius: 50%;padding: 10px;margin-right: 30px;}
+			.contact .wechatwrap .pic{display: inline-block;width: 50%;position: relative;transform-style: preserve-3d;perspective:500px;-webkit-perspective:500px;}
+			.contact .wechatwrap .pic img{width: 100%;}
+			.contact .wechatwrap .pic .avatar{width: 23.95833333%;position: absolute;top: 0;left: 0;margin-top: 38.02083333%;margin-left: 38.02083333%;}
+			.contact .avatar img{transform: rotateY(90deg) rotateZ(3600deg) translateX(0px) translateZ(300px) scale(9);transition: all 5s;border: 1px solid transparent;border-radius: 10px;}
+			.active .wechatwrap .pic .avatar img{transform: rotateY(0deg) rotateZ(0deg) translateX(0px) translateZ(0px) scale(1);}
+			.contact .row{padding-left: 40px;}
+			
+			.navwrap{position: fixed;top: 50%;right: 10px;z-index: 10;}
+			.navwrap li{width: 14px;height: 14px;margin: 10px;position: relative;cursor: pointer;}
+			.navwrap li span{width: 4px;height: 4px;background-color: #fff;display: inline-block;transition: all 0.3s;position: absolute;top:5px;left: 5px;}
+			.navwrap .active span{width: 14px;height: 14px;top: 0;left: 0;}
+			.navwrap li:hover span{width: 10px;height: 10px;top:2px;left:2px;}
+			.navwrap .active:hover span{width: 14px;height: 14px;top:0px;left:0px;}
+			@media screen and (min-width: 370px){
+				.project .banner3d>.nav span{font-size: 30px;}
+				.project .opacitydownshow{padding-top: 50px;}
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(130px);}
+				.project .banner3d{padding-bottom: 280px;}
+			}
+			@media screen and (min-width: 570px){
+				.project .banner3d>.nav span{font-size: 50px;}
+				.project .opacitydownshow{padding-top: 50px;}
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(180px);}
+				.project .banner3d{padding-bottom: 350px;}
+			}
+			@media screen and (min-width: 768px){
+				.project .opacitydownshow{padding-top: 50px;}
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(300px);}
+				.project .banner3d{padding-bottom: 330px;}
+			}
+			@media screen and (min-width: 992px){
+				.project .opacitydownshow{padding-top: 100px;}
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(300px);}
+				.project .banner3d{padding-bottom: 400px;}
+			}
+			@media screen and (min-width: 1200px){
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(350px);}
+				.project .banner3d{padding-bottom: 500px;}
+			}
+			@media screen and (min-width: 1500px){
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(400px);}
+				.project .banner3d{padding-bottom: 600px;}
+			}
+			@media screen and (min-width: 1720px){
+				.project .opacitydownshow{padding-top: 250px;}
+				.project .banner3d>.production{transform: rotateY(0deg) translateZ(400px);}
+				.project .banner3d{padding-bottom: 700px;}
+			}
+		</style>
+		
+	</head>
+	<body>
+		<!--<button id="btn">测试</button>-->
+		<!--<div class="box">
+			&AMP;
+		</div>
+		<div class="box">
+			2
+		</div>-->
+		<div class="container-fluid">
+			
+			<ul class="navwrap">
+				<li class="active">
+					<span class="img-circle"></span>
+				</li>
+				<li>
+					<span class="img-circle"></span>
+				</li>
+				<li>
+					<span class="img-circle"></span>
+				</li>
+				<li>
+					<span class="img-circle"></span>
+				</li>
+			</ul>
+			
+			<div class="top page">
+				<div id="rainy">
+					<iframe src="rainy/index.html"></iframe>
+				</div>
+				<div class="container text-center">
+					<h3>Rookie but Studious</h3>
+					<h1>周俊-Sid <p>此页为响应式页面</p></h1>
+					<div class="titlebanner">
+						<h2 class="opacitydownshow">这世界上没有优秀的理念，只有脚踏实地的结果</h2>
+						
+					</div>
+
+					<p class="opacitydownshow">Hello~我叫周俊!已经过了半百岁的一半年纪,在青春已过大半之时,才走进了代码的世界。虽然我戴了俩玻璃片，但还是蛮帅的，不信可以见下我本人(如果你不注重身高的话)。我初来乍到，还请大家多多关照。 </p>
+				</div>
+			</div>
+			<div class="project page">
+				<div class="shakewrap">
+					<h3 class="shakeshow">PROJECT</h3>
+				</div>
+				<div class="opacitydownshow">
+					<div class="banner3d">
+						<div class="nav prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</div>
+						<div class="production col-sm-4 col-xs-6 col-sm-push-4 col-xs-push-3">
+							<iframe src="3Dsuspend/3Dsuspend.html" scrolling="no"></iframe>
+						</div>
+						<div class="production col-sm-4 col-xs-6 col-sm-push-4 col-xs-push-3">
+							<iframe src="3Dsuspend/3Dsuspend.html" scrolling="no"></iframe>
+						</div>
+						<div class="production col-sm-4 col-xs-6 col-sm-push-4 col-xs-push-3">
+							<iframe src="3Dsuspend/3Dsuspend.html" scrolling="no"></iframe>
+						</div>
+						<div class="nav next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="canuse page">
+				<div class="shakewrap">
+					<h3 class="shakeshow">I CAN USE</h3>
+				</div>
+				<div class="opacitydownshow">
+					<div class="container text-center">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/js.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/jquery.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/vuejs.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/react.png" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/php.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/thinkphp.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/webpack.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/laravel.png" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/mysql.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/git.png" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/bootstrap.jpg" class="img-circle"/>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+							<img src="images/sass.png" class="img-circle"/>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="contact page">
+				<div class="container">
+					<div class="shakewrap">
+						<h3 class="shakeshow text-center">CONTACT ME</h3>
+					</div>
+					<div class=" opacityupshow">
+						<div class="row">
+							<div class="col-sm-6">
+								<p><i class="glyphicon glyphicon-earphone"></i>13301698751</p>
+								<p><i class="glyphicon glyphicon-envelope"></i>sidjun@163.com</p>
+								<p><i class="glyphicon glyphicon-map-marker"></i>上海市静安区长兴路</p>
+								
+							</div>
+							<div class="col-sm-6">
+								<div class="wechatwrap">
+									<i class="icon-wechat"></i>
+									
+									<div class="pic">
+										<img src="images/wechatcode.jpg"/>
+										<div class="avatar">
+											<img src="images/avatar.jpg"/>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery_easing/jquery.easing.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(function(){ 
+
+		var trlatZ='';//定义变量存translateZ的值
+		var proindex=0;//定义当前展示最前的production的下标
+		//设置3d轮播图的旋转角度
+		var proLgt=$(".production").length;
+		var degBasenum=360/proLgt;
+		var windowHeight=$(window).width();
+		
+		//将titlebanner中的内容转为数组
+		var title=$('.titlebanner h2').text();
+		var titlearr=title.split('，');
+		var titleIndex=0;
+		$('.titlebanner h2').text(titlearr[0]);
+			
+		//需要完成opacitydownshow后也就是3000毫秒后再进行轮播titlearr
+		setInterval(function(){
+			titleIndex++;
+			if(titleIndex>=titlearr.length){titleIndex=0;}
+			$('.titlebanner h2').fadeTo(1000,0,function(){
+				$('.titlebanner h2').text(titlearr[titleIndex]);
+			});
+			$('.titlebanner h2').delay(300).fadeTo(1000,1);
+		},3000)
+		
+		//判断页面的位置修改.navwrap li的active
+		$(window).scroll(function(){
+			$('.page').each(function(i){
+				if($(this).offset().top-$(window).scrollTop()<=200){
+					$(this).addClass('active')
+					$('.navwrap li').eq(i).addClass('active').siblings().removeClass('active');
+				}
+			})
+		})
+//		点击跳转到指定位置
+		$('.navwrap li').click(function(){
+			$(this).addClass('active').siblings().removeClass('active')
+			var index=$(this).index();
+			var pagetop=$('.page').eq(index).offset().top;
+			$('html, body').animate({ 'scrollTop': pagetop},1000,'easeOutBounce');
+			$('.page').eq(index).addClass('active')
+		})
+//		$('#btn').click(function(){
+//			let bodyheight=$('html, body').height()
+//			console.log(bodyheight)
+//			$('html, body').animate({ 'scrollTop': bodyheight*0.5},1000,'easeOutBounce');
+//		})
+		
+		
+		
+		//读取production中translateZ的值
+		function gettrlatZ(){
+			var windowWidth=$(window).width();
+			if(windowWidth>=1500){
+				trlatZ=400;
+			}else if(windowWidth>=1200){
+				trlatZ=350;
+				
+			}else if(windowWidth>=768){
+				trlatZ=300;
+			}else if(windowWidth>=570){
+				trlatZ=180;
+			}else if(windowWidth>=370){
+				trlatZ=130;
+			}else{
+				trlatZ=100;
+			}
+		}
+		//设置每个production的角度的方法
+		function setRotate(proi=0){//proindex代表当前展示的production的下标
+
+			gettrlatZ();
+			$(".production").each(function(i){
+				deg=i*degBasenum-1*proi*degBasenum;
+				$(this).css({'transform':'rotateY('+deg+'deg) translateZ('+trlatZ+'px)'})
+			})
+		}
+		
+		setRotate();
+		
+		$(window).resize(function(){
+			//当窗口大小改变时重新请求iframe的内容
+			$("#rainy iframe").attr("src","rainy/index.html");
+			setRotate();
+		})
+		
+		$('.prev').click(function(){
+			proindex--;
+//			if(proindex<0){
+//				proindex=proLgt-1;
+//			}
+			setRotate(proindex);
+		})
+		$('.next').click(function(){
+			proindex++;
+//			if(proindex>proLgt-1){proindex=0}
+			setRotate(proindex);
+		})
+		
+//		console.log($(".production").eq(0).css('webkitTransform'))
+		
+	});  
+	</script>
+</html>

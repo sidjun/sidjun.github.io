@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../css/demo.css"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<title></title>
+<style>
+	body{background-color: black;}
+	*{margin: 0; padding: 0;}
+	ul,li{list-style: none;}
+	img{width: 100%;transition: all 1s;padding: 15px;}
+
+	.container{padding:1% 10%;perspective: 800px;-webkit-perspective:800px;}
+	.container .boxList{position:relative;transition: all 2s;transform-style: preserve-3d;}
+	.container .boxList div{padding:0;transition: all 0.3s;min-height: 20px;min-width: 20px;}
+	.container .boxList div .b_shadow{width: 100%;position: absolute;top: 0;left: 0;transform: rotate(180deg);display: none;}
+	.container .on{transform: rotateX(35deg);margin-top: -5%;}
+	.container .on .ac .pic{transform: translateZ(-50px) translateY(-100px) rotateX(-90deg);transition: all 2s;position: absolute;}
+	.container .on .ac .b_shadow{display:block;opacity: 0;animation:aa 1.2s linear 0.5s forwards;}
+	@keyframes aa{
+		0%{opacity: 0;transform: translateY(0px) rotateX(180deg);}
+		50%{opacity: 0.1;transform: translateY(5px) rotateX(180deg);}
+		100%{opacity: 0.2;transform: translateY(10px) rotateX(180deg);}
+	}
+	@media screen and (min-width: 250px){
+		.container .on .ac .pic{transform: translateZ(0px) translateY(-100px) rotateX(-90deg);transition: all 2s;position: absolute;}
+		@keyframes aa{
+			0%{opacity: 0;transform: translateY(0px) rotateX(180deg);}
+			50%{opacity: 0.1;transform: translateY(25px) rotateX(180deg);}
+			100%{opacity: 0.2;transform: translateY(50px) rotateX(180deg);}
+		}
+	}
+	@media screen and (min-width: 400px){
+		.container .on .ac .pic{transform: translateZ(50px) translateY(-100px) rotateX(-90deg);transition: all 2s;position: absolute;}
+	}
+</style>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/jquery_easing/jquery.easing.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row boxList">
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/0.jpg" class="pic"/><img src="img/0.jpg" class="b_shadow"/>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/1.jpg" class="pic"/><img src="img/1.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/2.jpg" class="pic"/><img src="img/2.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-sm"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/3.jpg" class="pic"/><img src="img/3.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="clearfix visible-md"></div>
+			<div class="clearfix visible-lg"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/0.jpg" class="pic"/><img src="img/0.jpg" class="b_shadow"/>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/1.jpg" class="pic"/><img src="img/1.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="clearfix visible-sm"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/2.jpg" class="pic"/><img src="img/2.jpg" class="b_shadow"/>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/3.jpg" class="pic"/><img src="img/3.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="clearfix visible-md"></div>
+			<div class="clearfix visible-lg"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/0.jpg" class="pic"/><img src="img/0.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-sm"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/1.jpg" class="pic"/><img src="img/1.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-xs"></div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/2.jpg" class="pic"/><img src="img/2.jpg" class="b_shadow"/>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+				<img src="img/3.jpg" class="pic"/><img src="img/3.jpg" class="b_shadow"/>
+			</div>
+			<div class="clearfix visible-sm"></div>
+			<div class="clearfix visible-md"></div>
+			<div class="clearfix visible-lg"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$('.boxList>div').prop('onoff',false)
+		$('.boxList>div').click(function(){
+			$('.boxList').addClass('on');
+			if($(this).prop('onoff')){$(this).removeClass('ac').prop('onoff',false);return;}
+			$(this).addClass('ac').siblings().removeClass('ac');
+			$(this).prop('onoff',true);
+		})
+	})
+</script>
+</html>
